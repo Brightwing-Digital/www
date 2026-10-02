@@ -1,0 +1,268 @@
+---
+import { CalendarCheck, Compass, MapPin, MonitorSmartphone, Sparkles, Workflow } from '@lucide/astro'
+import { Image } from 'astro:assets'
+import heroIllustration from '../assets/hero-illustration.png'
+import websiteMockup from '../assets/website-mockup.webp'
+import workMedspa from '../assets/work-medspa.jpg'
+import workSkinClinic from '../assets/work-skin-clinic.jpg'
+import workSpa from '../assets/work-spa.jpg'
+import { BOOKING_URL } from '../components/navLinks'
+import SiteFooter from '../components/SiteFooter.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const PRACTICE_TYPES = [
+  'Medspas',
+  'Aesthetic practices',
+  'Wellness studios',
+  'Day spas',
+  'Skincare clinics',
+]
+
+const SERVICES = [
+  {
+    icon: Compass,
+    title: 'Marketing Strategy',
+    body: 'A plan built around your treatment menu, your busy and slow seasons, and your goals.',
+  },
+  {
+    icon: MonitorSmartphone,
+    title: 'Web Design & Build',
+    body: 'Fast, well-made sites that turn visitors into booked clients.',
+  },
+  {
+    icon: MapPin,
+    title: 'SEO & Local Search',
+    body: 'Show up in Google Maps and local search for the treatments that fill your schedule.',
+  },
+  {
+    icon: CalendarCheck,
+    title: 'Booking & Funnels',
+    body: 'Simple booking flows and reminders that cut no-shows and fill open slots.',
+  },
+  {
+    icon: Sparkles,
+    title: 'AI & Agents',
+    body: 'AI assistants that answer client questions from your own treatment materials and pass qualified leads to your front desk.',
+  },
+  {
+    icon: Workflow,
+    title: 'Automation',
+    body: 'Email and SMS flows that re-engage past clients and reward your regulars, on autopilot.',
+  },
+]
+
+const FEATURE_POINTS = [
+  'A strategy shaped around your practice and the clients you want',
+  'Decisions based on your numbers, with reporting you’ll actually read',
+  'Storytelling that gets you chosen by the right clients',
+]
+
+// Placeholder projects — replace with real client work before launch.
+const WORK = [
+  {
+    image: workSpa,
+    alt: 'A therapist giving a client in a robe a shoulder massage in a spa treatment room',
+    title: 'Coming soon',
+  },
+  {
+    image: workSkinClinic,
+    alt: 'A skin clinic aesthetician reviewing treatment progress photos with a client on a tablet',
+    title: 'Coming soon',
+  },
+  {
+    image: workMedspa,
+    alt: 'A medspa clinician talking through a treatment plan with a client in a treatment chair',
+    title: 'Coming soon',
+  },
+]
+---
+
+<BaseLayout
+  title="Brightwing Digital"
+  description="Websites, search, social, and booking funnels for wellness and self-care brands, built and run by one team."
+>
+  <SiteHeader />
+
+  <main>
+
+  {/* ================= HERO ================= */}
+  <section
+    class="mx-auto box-content grid max-w-site items-center gap-[60px] px-6 pt-[84px] pb-[88px] md:grid-cols-[1.02fr_.98fr] md:px-14"
+  >
+    <div>
+      <div
+        class="mb-7 inline-block rounded-[40px] bg-bw-teal-100 px-4 py-2 text-[11.5px] font-bold tracking-[2px] text-bw-teal-600 uppercase"
+      >
+        Wellness &amp; self-care brands
+      </div>
+      <h1
+        class="mb-[26px] font-serif text-5xl leading-[1.01] font-medium tracking-[-1px] md:text-[68px]"
+      >
+        Your growth partner for a brighter presence and{' '}
+        <span class="text-bw-teal-600 italic">fuller books</span>.
+      </h1>
+      <p class="mb-[34px] max-w-[490px] text-[17.5px] leading-[1.62] text-bw-ink-600">
+        Marketing strategy, websites, search, booking funnels, and automation, planned together so
+        your calendar fills up while you focus on your clients.
+      </p>
+      <div class="flex flex-wrap items-center gap-3.5">
+        <a
+          href="#contact"
+          class="rounded-md bg-bw-teal-600 px-5 py-4 whitespace-nowrap sm:px-[30px] text-[15px] font-semibold text-white transition-colors hover:bg-bw-teal-700"
+        >
+          Start a project
+        </a>
+        <a
+          href="#approach"
+          class="rounded-md border border-bw-line-strong bg-white px-5 py-4 whitespace-nowrap sm:px-7 text-[15px] font-semibold text-bw-teal-600 transition-colors hover:text-bw-ink-900"
+        >
+          See our approach
+        </a>
+      </div>
+    </div>
+    <div class="flex h-[520px] items-center justify-center">
+      <Image
+        src={heroIllustration}
+        alt="Illustration of a strategist at a whiteboard and a developer building the site plan"
+        loading="eager"
+        fetchpriority="high"
+        class="h-full w-auto max-w-full object-contain"
+      />
+    </div>
+  </section>
+
+  {/* ================= BUILT FOR ================= */}
+  <section class="border-y border-bw-line bg-white px-6 py-[30px] md:px-14">
+    <div
+      class="mx-auto flex max-w-site flex-wrap items-center gap-x-6 gap-y-1 lg:justify-between lg:gap-8"
+    >
+      <span
+        class="basis-full text-[11.5px] font-semibold tracking-[1.5px] text-bw-ink-600 uppercase lg:basis-auto"
+      >
+        Built for
+      </span>
+      {
+        PRACTICE_TYPES.map((type) => (
+          <span class="font-serif text-[21px] text-bw-ink-600">{type}</span>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ================= SERVICES ================= */}
+  <section id="services" class="mx-auto box-content max-w-site px-6 py-24 md:px-14">
+    <div class="mb-[52px] text-center">
+      <div class="mb-4 text-[11.5px] font-bold tracking-[3px] text-bw-teal-600 uppercase">
+        Everything under one roof
+      </div>
+      <h2 class="font-serif text-4xl font-medium tracking-[-.5px] md:text-[50px]">
+        Six services, one team
+      </h2>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        SERVICES.map((service) => (
+          <div class="rounded-[10px] border border-bw-line bg-white p-8">
+            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-bw-teal-100 text-bw-teal-600">
+              <service.icon size={22} stroke-width={1.75} aria-hidden="true" />
+            </div>
+            <h3 class="mb-2 font-serif text-[25px]">{service.title}</h3>
+            <div class="text-[14.5px] leading-[1.6] text-bw-ink-600">{service.body}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ================= SPLIT FEATURE ================= */}
+  <section id="approach" class="grid items-center bg-bw-teal-600 text-bw-paper md:grid-cols-2">
+    <div class="w-full max-w-[calc(var(--container-site)/2+56px)] px-6 py-24 md:justify-self-end md:px-14">
+      <div class="mb-[22px] text-[11.5px] font-bold tracking-[3px] text-bw-teal-100 uppercase">
+        Strategy first
+      </div>
+      <h2
+        class="mb-6 font-serif text-4xl leading-[1.06] font-medium tracking-[-.5px] md:text-5xl"
+      >
+        A plan behind every post, page, and promotion.
+      </h2>
+      <p class="mb-8 max-w-[440px] text-[16.5px] leading-[1.65] text-bw-teal-100">
+        We start with your goals, your clients, and what sets your practice apart, then build the
+        marketing around them, so your website, social, and email all work toward the same goals.
+      </p>
+      <div class="flex flex-col gap-4">
+        {
+          FEATURE_POINTS.map((point) => (
+            <div class="flex items-baseline gap-3 text-[15.5px]">
+              <span class="text-bw-teal-200" aria-hidden="true">✓</span> {point}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    {/* The mockup is positioned absolutely so its height crops to the panel instead of stretching the row. */}
+    <div
+      class="relative h-full min-h-[320px] self-stretch overflow-hidden bg-bw-teal-700 md:min-h-[520px]"
+    >
+      <Image
+        src={websiteMockup}
+        alt="Illustrated mockup of a wellness practice website"
+        widths={[640, 1172]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        class="absolute top-10 left-8 block w-[calc(100%-2rem)] rounded-tl-xl shadow-2xl shadow-bw-teal-800/50 md:top-14 md:left-14 md:w-[calc(100%-3.5rem)]"
+      />
+    </div>
+  </section>
+
+  {/* ================= WORK ================= */}
+  <section id="work" class="mx-auto box-content max-w-site px-6 py-24 md:px-14">
+    <div class="mb-10 border-b border-bw-line pb-[22px]">
+      <h2 class="font-serif text-4xl font-medium tracking-[-.5px] md:text-[44px]">Selected work</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        WORK.map((project) => (
+          <div>
+            <Image
+              src={project.image}
+              alt={project.alt}
+              widths={[400, 800]}
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              class="mb-4 block aspect-[3/2] w-full rounded-[10px] object-cover"
+            />
+            <h3 class="font-serif text-2xl">{project.title}</h3>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ================= CTA ================= */}
+  <section id="contact" class="mx-auto box-content max-w-site px-6 pb-24 md:px-14">
+    <div
+      class="rounded-xl bg-bw-teal-100 px-8 py-12 md:px-14 md:py-16 lg:flex lg:items-center lg:justify-between lg:gap-16"
+    >
+      <div class="max-w-[620px]">
+        <h2 class="mb-4 font-serif text-[38px] leading-[1.15] font-medium tracking-[-.3px] md:text-[44px]">
+          Let us help you take flight.
+        </h2>
+        <p class="text-[15.5px] leading-[1.6] text-bw-teal-800">
+          Book a discovery call and we’ll walk you through a tailored plan for your practice,
+          starting with what we’d do first.
+        </p>
+      </div>
+      <a
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener"
+        class="mt-[30px] inline-block shrink-0 rounded-md bg-bw-teal-600 px-8 py-4 text-[15px] font-semibold text-white transition-colors hover:bg-bw-teal-700 lg:mt-0"
+      >
+        Book a discovery call
+      </a>
+    </div>
+  </section>
+
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

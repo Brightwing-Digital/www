@@ -1,0 +1,214 @@
+---
+import { Image } from 'astro:assets'
+import sebastianHeadshot from '../assets/sebastian.webp'
+import soniaHeadshot from '../assets/sonia.webp'
+import { BOOKING_URL } from '../components/navLinks'
+import SiteFooter from '../components/SiteFooter.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const SONIA_PARAGRAPHS = [
+  'Sonia has spent more than fifteen years in marketing and sales, digital strategy, project management, and marketing operations, across corporate, agency, and startup environments.',
+  'She’s worked with Allergan Aesthetics (Botox, Juvéderm, CoolSculpting, SkinMedica, and Ailē), along with Coty, Kylie Cosmetics, Anthropologie, Cartoon Network, and Warner Bros. Discovery. She’s built campaigns with Bon Appétit, Food & Wine, SELF, Popsugar, and Tastemade.',
+  'Which means when we start working with your practice, she already knows the treatment menu, the manufacturer rebate programs, the loyalty math, and the seasonality of your calendar. That’s not something you can research your way into in a discovery call.',
+  'Her specialties: marketing strategy, content marketing, SEO and local search, marketing operations, and automation. She brings both order and creativity to messy marketing setups, and she likes the operational side that most creatives avoid.',
+]
+
+const SEBASTIAN_PARAGRAPHS = [
+  'Sebastian has been building software for fourteen years, including multiple B2B SaaS platforms serving hundreds of organizations. He’s worked on everything from the database to the front end, in production, with real users.',
+  'He can take a project from a fledgling idea to a live, deployed, fast, accessible site without waiting on anyone. He can build the parts most agencies quietly outsource: booking flows, CRM and email integrations, webhooks, custom admin tools, the plumbing that makes automation actually work. He has integrated dozens of systems, including Salesforce, HubSpot, Mailchimp, and SendGrid, so whatever you’re already running, we can almost certainly talk to it.',
+  'He has also spent the last several years building AI systems that run in production. Applied to your practice, that looks like agents that qualify leads, answer questions from your own treatment materials, and hand a clean summary to your front desk instead of generic chatbot noise.',
+  'He’ll take a project from blank page to finished interface, or pick up someone else’s mockup and build it faithfully. Either way, he builds around the people using the site: how quickly they find what they need, and how easily they get where they’re going.',
+]
+
+const STORY_PARAGRAPHS = [
+  'For years, Sonia kept hitting the same wall. She’d hand a genuinely good idea to a development team and get back something late, something half-right, or something that had quietly dropped the one detail that made the idea work.',
+  'We were each busy with our own separate work when Sebastian picked up on Sonia’s frustration. He listened to the problem she was describing and realized it was one he could solve that same day. So he did.',
+  'It turned out we were good together professionally too. Her strategy stopped getting lost in translation, and his engineering finally had someone steering it toward what mattered. Brightwing is what we built out of that.',
+]
+
+const HOW_WE_WORK = [
+  {
+    number: '1.',
+    title: 'One team, one conversation.',
+    body: 'You talk to the person doing the work, because there are only two of us. No account manager relays your question to a developer you’ll never meet.',
+  },
+  {
+    number: '2.',
+    title: 'Strategy and build in the same room.',
+    body: 'When the marketing plan calls for a new booking flow, we build it without a change order. When something isn’t converting, the person who can fix the code is already on the call.',
+  },
+  {
+    number: '3.',
+    title: 'We build things that last.',
+    body: 'Your website should still be fast, secure, and easy to update three years from now. We don’t hand you something we’d be embarrassed to maintain.',
+  },
+]
+
+const FOUNDERS = [
+  {
+    eyebrow: 'The marketing half',
+    name: 'Sonia',
+    headshot: soniaHeadshot,
+    paragraphs: SONIA_PARAGRAPHS,
+  },
+  {
+    eyebrow: 'The engineering half',
+    name: 'Sebastian',
+    headshot: sebastianHeadshot,
+    paragraphs: SEBASTIAN_PARAGRAPHS,
+  },
+]
+---
+
+<BaseLayout
+  title="About — Brightwing Digital"
+  description="Sonia and Sebastian, the marketing and engineering halves of Brightwing Digital."
+>
+  <SiteHeader current="/about/" />
+
+  <main>
+
+  {/* ================= HERO ================= */}
+  <section class="border-b border-bw-line bg-white px-6 pt-[88px] pb-24 md:px-14">
+    <div class="mx-auto max-w-site">
+      <div
+        class="mb-[30px] inline-block rounded-[40px] bg-bw-teal-100 px-4 py-2 text-[11.5px] font-bold tracking-[2px] text-bw-teal-600 uppercase"
+      >
+        About Us
+      </div>
+      <h1
+        class="mb-10 font-serif text-5xl leading-[1.04] font-medium tracking-[-1px] md:text-[62px]"
+      >
+        <span class="block">Most agencies are half a team.</span>{' '}
+        <span class="block text-bw-teal-600 italic">We’re the other half too.</span>
+      </h1>
+      <div
+        class="grid max-w-[560px] gap-[22px] text-[17.5px] leading-[1.68] text-bw-ink-600 lg:max-w-none lg:grid-cols-2 lg:gap-16"
+      >
+        <p>
+          Agencies tend to split into marketing people who can’t build and developers who don’t
+          think about conversion. If you’ve hired one before, you already know how this goes: the
+          strategy deck says one thing, the website does another, and somewhere in between, the leads
+          stop showing up.
+        </p>
+        <p>
+          We’re Sonia and Sebastian, the marketing half and the engineering half of Brightwing
+          Digital. We’re married, we’re based in Atlanta, and we built this company so our clients
+          would only ever need one conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ================= FOUNDERS ================= */}
+  <section class="mx-auto box-content max-w-site px-6 pt-24 md:px-14">
+    {
+      FOUNDERS.map((founder, i) => (
+        <div class={i === 0 ? 'border-b border-bw-line pb-16' : 'pt-16'}>
+          <div class="grid items-start gap-8 md:grid-cols-[.72fr_1.28fr] md:gap-16">
+            <div>
+              {/* multiply drops the drawings' white backdrop into the page's paper tone */}
+              <Image
+                src={founder.headshot}
+                alt={`Illustrated portrait of ${founder.name}`}
+                widths={[320, 640]}
+                sizes="(min-width: 768px) 320px, 240px"
+                class="mb-8 block w-[240px] mix-blend-multiply md:w-[320px]"
+              />
+              <div class="mb-4 text-[11.5px] font-bold tracking-[3px] text-bw-teal-600 uppercase">
+                {founder.eyebrow}
+              </div>
+              <h2 class="font-serif text-[52px] leading-none font-medium tracking-[-.5px]">
+                {founder.name}
+              </h2>
+            </div>
+            <div class="flex max-w-[680px] flex-col gap-5 text-[16.5px] leading-[1.7] text-bw-ink-600">
+              {founder.paragraphs.map((text) => (
+                <p>{text}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  {/* ================= WHY WE STARTED ================= */}
+  <section class="mt-24 border-y border-bw-line bg-white px-6 py-24 md:px-14">
+    <div
+      class="mx-auto grid max-w-site items-start gap-8 md:grid-cols-[.72fr_1.28fr] md:gap-16"
+    >
+      <div>
+        <div class="mb-4 text-[11.5px] font-bold tracking-[3px] text-bw-teal-600 uppercase">
+          Our story
+        </div>
+        <h2
+          class="font-serif text-4xl leading-[1.06] font-medium tracking-[-.5px] md:text-[44px]"
+        >
+          Why we started Brightwing
+        </h2>
+      </div>
+      <div
+        class="flex max-w-[680px] flex-col gap-[22px] text-[17px] leading-[1.7] text-bw-ink-600"
+      >
+        {STORY_PARAGRAPHS.map((text) => <p>{text}</p>)}
+      </div>
+    </div>
+  </section>
+
+  {/* ================= HOW WE WORK ================= */}
+  <section class="bg-bw-teal-600 px-6 py-24 text-bw-paper md:px-14">
+    <div class="mx-auto max-w-site">
+      <div class="mb-14 max-w-[640px]">
+        <div class="mb-5 text-[11.5px] font-bold tracking-[3px] text-bw-teal-100 uppercase">
+          How we work
+        </div>
+        <h2 class="font-serif text-4xl leading-[1.06] font-medium tracking-[-.5px] md:text-5xl">
+          Three things you can count on
+        </h2>
+      </div>
+      <div class="grid gap-10 md:grid-cols-3">
+        {
+          HOW_WE_WORK.map((item) => (
+            <div class="border-t border-bw-teal-500 pt-[26px]">
+              <div class="mb-4 font-serif text-[30px] text-bw-teal-200 italic">{item.number}</div>
+              <h3 class="mb-3 font-serif text-[27px]">{item.title}</h3>
+              <p class="text-[15.5px] leading-[1.68] text-bw-teal-100">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ================= WHO WE WORK WITH + CTA ================= */}
+  <section id="contact" class="mx-auto box-content max-w-site px-6 py-24 md:px-14">
+    <div class="rounded-xl bg-bw-teal-100 px-8 py-16 text-center md:px-16 md:py-20">
+      <div class="mb-[22px] text-[11.5px] font-bold tracking-[3px] text-bw-teal-600 uppercase">
+        Who we work with
+      </div>
+      <p
+        class="mx-auto mb-6 max-w-[820px] font-serif text-[28px] leading-[1.3] tracking-[-.3px] text-bw-ink-900 md:text-4xl"
+      >
+        We work with owners of medspas, aesthetic practices, and wellness businesses who care about
+        the experience they give their clients and want their website and marketing to match it.
+      </p>
+      <p class="mb-[34px] text-[17px] text-bw-teal-800">
+        If that’s you, we’d love to hear what you’re building.
+      </p>
+      <a
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener"
+        class="inline-block rounded-md bg-bw-teal-600 px-[34px] py-4 text-[15px] font-semibold text-white transition-colors hover:bg-bw-teal-700"
+      >
+        Book a call →
+      </a>
+    </div>
+  </section>
+
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

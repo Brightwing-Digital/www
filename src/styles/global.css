@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+/* Brightwing Digital design tokens (tokens/colors.css in the design system). */
+@theme {
+  --font-sans: 'Hanken Grotesk', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+
+  /* Content width (max-w-site). Sections that pad themselves pair it with
+     box-content so the limit applies to the content, not content + gutter. */
+  --container-site: 1120px;
+
+  /* Base palette: cool teal-blue */
+  --color-bw-teal-800: #2c4a5a;
+  --color-bw-teal-700: #35576a;
+  --color-bw-teal-600: #3e6376; /* the brand blue */
+  --color-bw-teal-500: #5f8397;
+  --color-bw-teal-400: #668b9e;
+  --color-bw-teal-200: #afcad4;
+  --color-bw-teal-100: #dce7eb;
+  --color-bw-teal-050: #e6eef1;
+
+  /* Base palette: warm-cool neutrals */
+  --color-bw-ink-900: #1f2b32;
+  --color-bw-ink-600: #5e727b;
+  --color-bw-ink-400: #7c95a0;
+  --color-bw-ink-300: #9db0b8;
+  --color-bw-line: #e2e9ec;
+  --color-bw-line-strong: #c5d4da;
+  --color-bw-mist: #f2f6f7;
+  --color-bw-paper: #f5f7f8;
+}
+
+body {
+  background: var(--color-bw-paper);
+}
+
+/* Keep in-page jumps (#services, #approach…) clear of the sticky header, which is taller on phones. */
+html {
+  scroll-padding-top: 112px;
+
+  @media (width >= 48rem) {
+    scroll-padding-top: 90px;
+  }
+}

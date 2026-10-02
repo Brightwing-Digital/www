@@ -1,0 +1,27 @@
+---
+import { NAV_LINKS } from './navLinks'
+---
+
+<footer class="bg-bw-ink-900 px-6 py-12 text-bw-ink-400 md:px-14">
+  <div
+    class="mx-auto flex max-w-site flex-wrap items-center justify-between gap-8 text-[13.5px]"
+  >
+    <img
+      src="/assets/brightwing-logo-light.svg"
+      alt="Brightwing Digital"
+      width="185"
+      height="21"
+      class="block h-[21px] w-auto"
+    />
+    <nav aria-label="Footer" class="flex flex-wrap gap-[26px]">
+      {
+        NAV_LINKS.map((link) => (
+          <a href={link.href} class="text-bw-ink-400 transition-colors hover:text-bw-paper">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div>© 2026 Brightwing Digital</div>
+  </div>
+</footer>
